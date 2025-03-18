@@ -47,7 +47,7 @@ The Image Search system is built on a modern tech stack:
 ## Roadmap
 
 - [x] Initial repository setup
-- [ ] Basic web interface implementation
+- [x] Basic web interface implementation
 - [ ] Image upload and storage functionality
 - [ ] Integration with AI vision models
 - [ ] Natural language description generation
@@ -63,11 +63,9 @@ The Image Search system is built on a modern tech stack:
 ### Prerequisites
 
 - Node.js (v14+)
-- MongoDB
-- API keys for AI services
-- Cloud storage account
+- npm (v6+) or yarn
 
-### Installation
+### Installation and Running Locally
 
 ```bash
 # Clone the repository
@@ -76,14 +74,70 @@ cd image-search
 
 # Install dependencies
 npm install
-
-# Configure environment variables
-cp .env.example .env
-# Edit .env with your API keys and configuration
+# or if you use yarn
+yarn install
 
 # Start the development server
-npm run dev
+npm start
+# or
+yarn start
 ```
+
+After running the commands above, the application will be available at `http://localhost:3000` in your web browser.
+
+### Verifying the Web Interface
+
+To verify that the web interface is working correctly, follow these steps:
+
+1. **Launch the application**: 
+   - After running `npm start`, your browser should automatically open to `http://localhost:3000`
+   - If it doesn't, manually open your browser and navigate to that URL
+
+2. **Check the UI components**:
+   - You should see a header with "Image Search AI" logo at the top
+   - The left section should display an image uploader interface
+   - The right section should show a chat interface with a welcome message
+
+3. **Test image upload**:
+   - Drag and drop any image onto the upload area, or click to select files
+   - You should see the uploaded images appear in the gallery below the uploader
+   - For this demo, the AI analysis is simulated, so descriptions are placeholder text
+
+4. **Test the chat interface**:
+   - Type a message in the chat input (e.g., "Show me nature images")
+   - Press enter or click the send button
+   - The app should respond and highlight any relevant images in the gallery
+   - Try various queries to test the search functionality
+
+5. **Verify responsive layout**:
+   - Resize your browser window to check how the UI adapts to different screen sizes
+   - On smaller screens, sections should stack vertically
+
+### Troubleshooting
+
+If you encounter any issues:
+
+1. **Application doesn't start**:
+   - Ensure you have the correct Node.js version (use `node -v` to check)
+   - Check if there are any error messages in the terminal
+   - Make sure no other service is using port 3000
+
+2. **Images don't upload**:
+   - Check your browser console for any JavaScript errors
+   - Make sure your images meet the requirements (less than 5MB, common image formats)
+
+3. **Chat doesn't respond**:
+   - This is a frontend-only demo with simulated AI responses
+   - Ensure you entered text and clicked the send button or pressed enter
+
+## Current Limitations
+
+This version is a frontend prototype with simulated AI capabilities:
+
+- Image analysis is not actually performed - descriptions are pre-defined
+- Images are stored in browser memory only and will disappear on refresh
+- No backend storage or API integration yet
+- Search results are based on simple text matching, not actual AI understanding
 
 ## Contributing
 
