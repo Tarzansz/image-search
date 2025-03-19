@@ -62,10 +62,30 @@ The Image Search system is built on a modern tech stack:
 
 ### Prerequisites
 
-- Node.js (v14+)
-- npm (v6+) or yarn
+- Node.js (v14+ recommended, tested with v22+)
+- npm (v6+ recommended, tested with v10+) or yarn
 
 ### Installation and Running Locally
+
+#### Windows
+
+```powershell
+# Clone the repository
+git clone https://github.com/Tarzansz/image-search.git
+cd image-search
+
+# Install dependencies
+npm install
+# or if you use yarn
+yarn install
+
+# Start the development server
+npm start
+# or
+yarn start
+```
+
+#### macOS
 
 ```bash
 # Clone the repository
@@ -83,7 +103,33 @@ npm start
 yarn start
 ```
 
-After running the commands above, the application will be available at `http://localhost:3000` in your web browser.
+#### Ubuntu/Linux
+
+```bash
+# Clone the repository
+git clone https://github.com/Tarzansz/image-search.git
+cd image-search
+
+# Install dependencies
+npm install
+# or if you use yarn
+yarn install
+
+# Start the development server
+npm start
+# or
+yarn start
+```
+
+After running the commands above, the application will be available at `http://localhost:3000` in your web browser. Most modern browsers will be automatically launched when the server starts.
+
+### OS-Specific Launch Commands
+
+If the browser doesn't open automatically, you can use these commands:
+
+- **Windows**: `start http://localhost:3000` in PowerShell or Command Prompt
+- **macOS**: `open http://localhost:3000` in Terminal
+- **Ubuntu/Linux**: `xdg-open http://localhost:3000` in Terminal
 
 ### Verifying the Web Interface
 
@@ -113,22 +159,89 @@ To verify that the web interface is working correctly, follow these steps:
    - Resize your browser window to check how the UI adapts to different screen sizes
    - On smaller screens, sections should stack vertically
 
-### Troubleshooting
+## Troubleshooting Guide
 
-If you encounter any issues:
+### Common Issues Across All Platforms
+
+1. **Node.js Version Compatibility**:
+   - This application requires Node.js v14 or higher
+   - Verify your version with `node -v`
+   - If needed, update Node.js from [nodejs.org](https://nodejs.org/)
+
+2. **Dependency Installation Failures**:
+   - Try clearing npm cache: `npm cache clean --force`
+   - Ensure you have proper internet connection
+   - Check for any proxy or firewall issues
+
+3. **Permission Issues**:
+   - Ensure you have proper permissions to install packages
+   - On Unix-based systems, avoid using `sudo npm install` unless necessary
+
+### Windows-Specific Issues
+
+1. **Application doesn't start**:
+   - Ensure you have the correct Node.js version (use `node -v` to check)
+   - Check if there are any error messages in the terminal
+   - Make sure no other service is using port 3000
+   - Try running PowerShell as administrator
+
+2. **Port already in use**:
+   - Run `netstat -ano | findstr :3000` to find processes using port 3000
+   - Kill the process with `taskkill /PID <PID> /F`
+
+3. **Long Path Issues**:
+   - Windows may have issues with long file paths in node_modules
+   - Enable long path support in Windows 10+ or use a shorter installation path
+
+### macOS-Specific Issues
 
 1. **Application doesn't start**:
    - Ensure you have the correct Node.js version (use `node -v` to check)
    - Check if there are any error messages in the terminal
    - Make sure no other service is using port 3000
 
-2. **Images don't upload**:
-   - Check your browser console for any JavaScript errors
-   - Make sure your images meet the requirements (less than 5MB, common image formats)
+2. **Port already in use**:
+   - Run `lsof -i :3000` to find processes using port 3000
+   - Kill the process with `kill -9 <PID>`
 
-3. **Chat doesn't respond**:
+3. **Permissions Issues**:
+   - If you see EACCES errors, fix npm permissions: [npm docs](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally)
+
+### Ubuntu/Linux-Specific Issues
+
+1. **Application doesn't start**:
+   - Ensure you have the correct Node.js version (use `node -v` to check)
+   - Check if there are any error messages in the terminal
+   - Make sure no other service is using port 3000
+
+2. **Port already in use**:
+   - Run `sudo netstat -tulpn | grep :3000` to find processes using port 3000
+   - Kill the process with `kill -9 <PID>`
+
+3. **Browser doesn't open automatically**:
+   - Open your browser manually and navigate to `http://localhost:3000`
+   - Or use `xdg-open http://localhost:3000` in the terminal
+
+4. **Node.js Installation Issues**:
+   - Consider using NVM (Node Version Manager) for easier Node.js management
+   - Install with: `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash`
+
+### Application-Specific Issues
+
+1. **Images don't upload**:
+   - Check your browser console for any JavaScript errors (F12 or right-click > Inspect > Console)
+   - Make sure your images meet the requirements (less than 5MB, common image formats)
+   - Try using a different browser (Chrome, Firefox, Safari)
+
+2. **Chat doesn't respond**:
    - This is a frontend-only demo with simulated AI responses
    - Ensure you entered text and clicked the send button or pressed enter
+   - Check browser console for any errors
+
+3. **UI rendering issues**:
+   - Clear browser cache and reload
+   - Try disabling browser extensions that might interfere
+   - Update your browser to the latest version
 
 ## Current Limitations
 
